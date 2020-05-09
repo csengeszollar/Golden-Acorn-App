@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Display = (props) => {
+function Display(props){
     return (
         <div>
         <p>{props.children}</p>
