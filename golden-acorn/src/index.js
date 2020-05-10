@@ -18,11 +18,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SimpleGoldenAcornApp from './components/SimpleGoldenAcornApp';
+import { createStore } from "redux"
+import { Provider } from "react-redux"
+
+const initialState = {
+  count: 0
+}
+
+function reducer(state = initialState, action){
+  switch (action.type) {
+    case 'BUY_ACORN': 
+        return {count: state.count + 1}
+    case 'EAT_ACORN': 
+        // ne menjen 0 ala:
+        return {count: Math.max(state.count - 1, 0)}
+    
+    default: 
+        return state;
+    
+}
+}
+
+const store = createStore(reducer)
 
 ReactDOM.render(
-  <div>
-  <h1>Hello, Green Fox Academy!</h1>
+  <Provider store={store}>
+  {/* <h1>Hello, Green Fox Academy!</h1> */}
   <SimpleGoldenAcornApp></SimpleGoldenAcornApp>
-  </div>,
+  </Provider>,
   document.getElementById('root'),
 );
