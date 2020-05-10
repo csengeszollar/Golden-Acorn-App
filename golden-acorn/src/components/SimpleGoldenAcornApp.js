@@ -9,6 +9,7 @@ class SimpleGoldenAcornApp extends Component {
         this.state = {
              count: 0
         } 
+        this.decrement = this.decrement.bind(this)
     }
 
      increment() {
@@ -30,7 +31,7 @@ class SimpleGoldenAcornApp extends Component {
             <div>
             <div><Button onClick={() => this.increment()} name= "Buy one"></Button></div>
             <div><Display>{this.state.count}</Display></div>  
-            <div><Button onClick={() => this.decrement()} name= "Eat one"></Button></div>
+            <div><Button onClick={this.decrement} name= "Eat one"></Button></div>
             </div>
         )
     }
